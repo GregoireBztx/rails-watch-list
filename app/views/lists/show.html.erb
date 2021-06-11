@@ -1,24 +1,50 @@
-<h1><%= @list.name%></h1>
 
+<div class="banner-2" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1574267432553-4b4628081c31?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=889&q=80);">
+  <div class="container">
+    <h1 class="justify-content-center"><%= @list.name %></h1>
+  </div>
+</div>
 
-<ul>
-<% @list.bookmarks.each do |bookmark| %>
-<li>
-<%=bookmark.comment%>
-<%=bookmark.movie.title%>
-<%= link_to "Delete", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure?" } %>
-</li>
-<% end %>
-</ul>
+<div class= "container">
 
-
+<div class="card p-4" style="margin-bottom: 50px">
+<h3>Add a Bookmark</h3>
 <%= simple_form_for [@list, @bookmark] do |f| %>
   <%= f.input :comment %>
-  <%= f.association :movie %>
-  <%= f.button :submit %>
+  <%= f.association :movie , input_html: { class: 'select2' } %>
+  <%= f.button :submit , class:"btn btn-primary" %>
 <% end %>
 
 
+<div class=" justify-content-center ">
+ <div class = movies px-3>
+
+<% @list.bookmarks.each do |bookmark| %>
+<div class="card-trip" >
+  
+  <img src=<%= bookmark.movie.poster_url %>    />
+
+  <div  class="card-trip-top">
+   <h2><strong><%= bookmark.movie.title %></strong>  (<%= bookmark.movie.rating%> <i style="color:yellow" class="fas fa-star"></i>)</h2>
+      <p><%= bookmark.movie.overview %></p>
+      </div>
+      
+<hr class="solid">
+  <div class="card-trip-infos">
+  <div style="width: 70%">
+    <p style="font-size: 15px"> <strong>"</strong><%= bookmark.comment %><strong>"</strong></p>
+     </div>
+     <div>
+     <%= link_to "Remove",
+                  bookmark_path(bookmark),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+  </div>
+  </div>
+</div>
+<% end %>
+  </div>
 
 
-<%=link_to "Back to lists", lists_path %>
+
+</div>

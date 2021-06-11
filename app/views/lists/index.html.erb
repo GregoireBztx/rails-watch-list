@@ -1,16 +1,36 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1574267432553-4b4628081c31?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=889&q=80);">
   <div class="container">
-    <h1>Le Wagon brings <strong>tech skills</strong> to <strong>creative people</strong>!</h1>
-    <p>Change your life and learn to code at one of our campuses around the world.</p>
-    <a class="btn btn-flat" href="#">Apply now</a>
+    <h1>Create unique <strong>lists</strong> with your <strong>favorite movies</strong>!</h1>
+    <p><span id="banner-typed-text"></span></p>
   </div>
 </div>
 
-<ul>
-<% @lists.each do |list| %>
-<li><%=link_to list.name, list_path(list.id)%>
-</li>
-<% end %>
-</ul>
 
-<%=link_to "Add a List", new_list_path   %>
+
+<div class= "container">
+<div class=" justify-content-center ">
+
+<div class="d-flex justify-content-between mt-4">
+
+<div>
+<h2>My lists (<%= @lists.count %>)</h2>
+</div>
+<div>
+
+<%= simple_form_for(@list) do |f| %>
+  <%= f.input_field :name %>
+  <%= f.submit  class: "btn btn-primary"%>
+<% end %>
+</div>
+</div>
+  <div class = "category mb-5" >
+    <% @lists.each do |list| %>
+      <div>
+      <%=link_to list.name, list_path(list.id), class: "card-category", style: "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1485846234645-a62644f84728?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=740&q=80)"%>
+   </div>
+<% end %>
+    </div>
+</div>
+
+
+
