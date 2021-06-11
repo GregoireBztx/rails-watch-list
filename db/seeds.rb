@@ -8,7 +8,7 @@
 
 require 'open-uri'
 require 'nokogiri'
- 
+List.destroy_all
 Movie.destroy_all
 i=1
 8.times {
