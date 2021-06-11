@@ -35,3 +35,7 @@ grid-template-columns: 1fr 1fr 1fr;
 grid-gap: 20px 10px;
 
   }
+
+      @media (max-width: 900px) {
+      .category { grid-template-columns: repeat(2, 1fr); }
+    }
