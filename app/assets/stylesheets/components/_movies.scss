@@ -47,13 +47,15 @@
 
   }
   
-  
-  
 .movies {
     padding-top: 30px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 10px;
+    }
+
+    @media (max-width: 900px) {
+      .movies { grid-template-columns: repeat(1, 1fr); }
     }
 
  
