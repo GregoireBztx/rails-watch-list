@@ -18,9 +18,7 @@ class ListsController < ApplicationController
       @lists = List.all
       @list = List.new(list_params)
       if @list.save
-  
         redirect_to lists_path
-
       else
         render "lists/index"
       end
